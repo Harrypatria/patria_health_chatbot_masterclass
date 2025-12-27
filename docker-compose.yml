@@ -1,0 +1,61 @@
+# AI Health Copilot Pro - Docker Compose Configuration
+# Copyright (c) 2025 Harry Patria - Patria & Co.
+# Agentic AI Masterclass Project
+
+version: '3.8'
+
+services:
+  # Main Application Service
+  ai-health-copilot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai-health-copilot-app
+    image: harrypatria/ai-health-copilot:latest
+    ports:
+      - "8501:8501"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - APP_TITLE=AI Health Copilot Pro
+      - APP_VERSION=1.0.0
+      - ENABLE_LATENCY_TRACKING=True
+    volumes:
+      # Mount models directory for easy updates
+      - ./models:/app/models:ro
+      # Mount datasets directory
+      - ./datasets:/app/datasets:ro
+      # Mount logs directory for persistence
+      - ./logs:/app/logs
+      # Mount config directory
+      - ./config:/app/config:ro
+    restart: unless-stopped
+    networks:
+      - health-copilot-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 2G
+        reservations:
+          cpus: '1.0'
+          memory: 1G
+
+networks:
+  health-copilot-network:
+    driver: bridge
+    name: health-copilot-network
+
+volumes:
+  logs:
+    driver: local

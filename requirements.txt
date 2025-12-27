@@ -1,0 +1,39 @@
+# AI Health Copilot Pro - Dependencies
+# Copyright (c) 2025 Harry Patria - Patria & Co.
+# Agentic AI Masterclass Project
+
+# Core Framework
+streamlit==1.31.0
+streamlit-option-menu==0.3.12
+
+# Machine Learning & Data Science
+scikit-learn==1.4.0
+numpy==1.26.3
+pandas==2.2.0
+scipy==1.12.0
+
+# AI & LLM Integration
+openai==1.12.0
+
+# Visualization
+matplotlib==3.8.2
+seaborn==0.13.1
+plotly==5.18.0
+
+# Utilities
+pillow==10.2.0
+python-dotenv==1.0.1
+
+# Performance Monitoring
+psutil==5.9.8
+
+# Development & Testing (Optional)
+pytest==8.0.0
+black==24.1.1
+flake8==7.0.0
+mypy==1.8.0
+
+# Jupyter Notebook Support (for analytics)
+jupyter==1.0.0
+ipykernel==6.29.0
+ipywidgets==8.1.1
