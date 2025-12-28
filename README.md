@@ -1,4 +1,5 @@
-# AI Health Copilot Pro
+# AI Health Copilot Pro 
+## Masterclass Batch 6 Agentic AI and RAG, December 2025
 
 Advanced Multi-Disease Prediction System powered by Machine Learning and Generative AI
 
